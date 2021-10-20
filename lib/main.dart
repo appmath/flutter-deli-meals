@@ -4,6 +4,7 @@ import 'package:flutter_deli_meals/screens/filter_screen.dart';
 import 'package:flutter_deli_meals/screens/filter_screen.dart';
 import 'package:flutter_deli_meals/screens/meal_detail_screen.dart';
 import 'package:flutter_deli_meals/screens/tab_screen.dart';
+import 'package:flutter_deli_meals/util/material_colors.dart';
 
 import 'screens/categories_screen.dart';
 
@@ -15,8 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DeliMeal',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
-        accentColor: Colors.amber,
+        primarySwatch: greyMaterialColor,
+        accentColor: orangeMaterialColor,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
@@ -59,3 +60,10 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+// BlueGrey
+// Primary: #546E7A
+// Dark:  #29434E
+// Light: #819CA9
+
+// Light Orange
+// Primary: #FF8A65
