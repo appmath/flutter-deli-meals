@@ -2,6 +2,6 @@
 
 ### Fun app for tracking meals and various pieces of information tied to each meal like cost, complexity etc.
 
-![Categories Screen](./screenshots/categories-screen.png) 
+![Categories Screen](./screenshots/categories.png) 
 
-![Drawer](./screenshots/drawer-screen.png) 
+![Drawer](./screenshots/drawer.png) 
