@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_deli_meals/util/constants.dart';
 import 'package:flutter_deli_meals/widgets/main_drawer.dart';
 
-class FilterScreen extends StatefulWidget {
+class FiltersScreen extends StatefulWidget {
   static const routeName = '/filter-screen';
 
+  final Function saveFilterHandler; // a.k.a. saveFilters
+  final Map<String, bool> currentFilters;
+
+  FiltersScreen(
+      {required this.currentFilters, required this.saveFilterHandler});
+
   @override
-  State<FilterScreen> createState() => _FilterScreenState();
+  State<FiltersScreen> createState() => _FiltersScreenState();
 }
 
-class _FilterScreenState extends State<FilterScreen> {
+class _FiltersScreenState extends State<FiltersScreen> {
   var _glutenFree = false;
   var _vegetarian = false;
   var _vegan = false;
   var _lactoseFree = false;
+
+  @override
+  void initState() {
+    _glutenFree = widget.currentFilters[gluten] ?? false;
+    _vegetarian = widget.currentFilters[vegetarian] ?? false;
+    _vegan = widget.currentFilters[vegan] ?? false;
+    _lactoseFree = widget.currentFilters[lactose] ?? false;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +36,21 @@ class _FilterScreenState extends State<FilterScreen> {
         Scaffold(
             appBar: AppBar(
               title: const Text('Your Filters'),
+              actions: [
+                IconButton(
+                  icon: Icon(Icons.save),
+                  onPressed: () {
+                    final selectedFilters = {
+                      gluten: _glutenFree,
+                      lactose: _lactoseFree,
+                      vegan: _vegan,
+                      vegetarian: _vegetarian,
+                    };
+
+                    widget.saveFilterHandler(selectedFilters);
+                  },
+                )
+              ],
               // backgroundColor: Colors.white,
             ),
             drawer: MainDrawer(),
