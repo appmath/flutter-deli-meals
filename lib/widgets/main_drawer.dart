@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_deli_meals/screens/filter_screen.dart';
+import 'package:flutter_deli_meals/screens/filters_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -47,7 +47,7 @@ class MainDrawer extends StatelessWidget {
           Navigator.pushReplacementNamed(context, '/');
         }),
         buildListTile('Filters', Icons.settings, () {
-          Navigator.pushReplacementNamed(context, FilterScreen.routeName);
+          Navigator.pushReplacementNamed(context, FiltersScreen.routeName);
         }),
       ],
     ));

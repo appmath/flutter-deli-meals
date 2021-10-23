@@ -5,6 +5,13 @@ import 'package:flutter_deli_meals/models/meal.dart';
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
 
+  final Function toggleFavoriteHandler;
+  final Function isMealFavoriteHandler;
+
+  MealDetailScreen(
+      {required this.toggleFavoriteHandler,
+      required this.isMealFavoriteHandler});
+
   @override
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context)!.settings.arguments as String;
@@ -80,9 +87,11 @@ class MealDetailScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.delete, color: Colors.white),
+        child: Icon(
+            isMealFavoriteHandler(mealId) ? Icons.star : Icons.star_border,
+            color: Colors.white),
         onPressed: () {
-          Navigator.of(context).pop(mealId);
+          toggleFavoriteHandler(mealId);
         },
       ),
     );
